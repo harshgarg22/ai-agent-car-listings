@@ -13,6 +13,7 @@ wheels/
 data/*.csv
 data/*.json
 data/*.db
+data/t1/*
 !data/.gitkeep
 
 

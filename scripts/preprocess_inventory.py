@@ -31,7 +31,7 @@ def extract_numerical_features(row):
         clean_price = (price_match.group(1) or price_match.group(2)).replace(',', '')
         price_val = float(clean_price)
 
-    # Extract Odometer 
+    # extract odometer info
     odo_val = None
     odo_pattern = re.compile(
         r'(?:Odometer|Mileage|Kms)[\s:;\-]*([0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)|([0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)[\s:;\-]*(?:kms|km)\b', 
@@ -63,9 +63,10 @@ def preprocess_and_embed():
     else:
         df = pd.read_csv(raw_file_path)
 
-    # Normalize columns
+    # removing any spaces in the columns, stripping spaces before and after, lowercasing everything
     df.columns = [str(col).lower().strip().replace(' ', '_') for col in df.columns]
     
+    #just a sanity check to see if description and title and available in the columns
     if 'description' not in df.columns:
         df['description'] = ''
     if 'title' not in df.columns:
@@ -74,10 +75,12 @@ def preprocess_and_embed():
     df['description'] = df['description'].fillna('')
     df['title'] = df['title'].fillna('')
 
+    #calling the previous function to handle the regex and detection
     print("Cleaning text and extracting exact numerical data...")
     extracted_features = df.apply(extract_numerical_features, axis=1)
     df = pd.concat([df, extracted_features], axis=1)
 
+    #checking how many values were extracted
     found_prices = df['extracted_price'].notna().sum()
     found_odos = df['extracted_odometer'].notna().sum()
     print(f"Successfully extracted: {found_prices} Prices | {found_odos} Odometers.")
@@ -92,7 +95,6 @@ def preprocess_and_embed():
     embeddings = []
     for index, row in df.iterrows():
         try:
-            # FIX 1: Using the latest GA model
             response = embedding(
                 model="gemini/gemini-embedding-2", 
                 input=row['semantic_text']
@@ -100,7 +102,6 @@ def preprocess_and_embed():
             vector = response['data'][0]['embedding']
             embeddings.append(vector)
             
-            # FIX 2: Buffer to prevent hitting free tier rate limits
             time.sleep(0.5)
             
         except Exception as e:
