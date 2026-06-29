@@ -90,7 +90,8 @@ First, I would swap out the in-memory Pandas dataframe and JSON files for a prop
 ### 1. Exploring the Inventory
 *(Here is a demonstration of the AI guiding a user through the inventory, applying budget constraints, and formatting the output natively.)*
 
-![Recalling User Preferences from a Past conversation](images/recalling_user_preferences.png)
+![recalling_user_preferences](images/recalling_user_preferences.png)
+*Recalling User Preferences from a Past conversation*
 
 ### 2. Recalling User Preferences
 *(Here is a demonstration of a completely new session where the AI recognizes the returning user ID and remembers exactly what they were looking for yesterday.)*
