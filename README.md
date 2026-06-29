@@ -88,12 +88,28 @@ First, I would swap out the in-memory Pandas dataframe and JSON files for a prop
 ## 📸 See it in action
 
 ### 1. Exploring the Inventory
-*(Here is a demonstration of the AI guiding a user through the inventory, applying budget constraints, and formatting the output natively.)*
+
+![new_user_session.png](images/new_user_session.png)
+*The AI agent guiding the user through the selection of the cars*
+
+![new_user_session_2](images/new_user_session_2.png)
+*Making a booking for the Test Drive*
+
+![booking_information](images/booking_information.png)
+*Persisted Booking Information after user enters the information*
+
+![guardrails](images/guardrails.png)
+*Conversation turn and guardrails*
+
+
+### 2. Recalling User Preferences
+
 
 ![recalling_user_preferences](images/recalling_user_preferences.png)
 *Recalling User Preferences from a Past conversation*
 
-### 2. Recalling User Preferences
-*(Here is a demonstration of a completely new session where the AI recognizes the returning user ID and remembers exactly what they were looking for yesterday.)*
+![adding_preferences](images/adding_preferences.png)
+*Adding New Preferences for the Current User*
 
-![Memory Recall](placeholder-for-screenshot-2.png)
+![user_preferences](images/user_preferences.png)
+*Persisted User Preferences in the Local Database*
