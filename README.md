@@ -1,8 +1,6 @@
 # 🚗 Dubizzle AI Car Concierge
 
-**Author:** Harsh Garg
-
-Hey there! Welcome to my submission for the Dubizzle AI Car Concierge. 
+**Author:** Harsh Garg 
 
 I built this project to be more than just a simple chatbot wrapper. It's a fully functional, multi-turn AI agent that helps users explore the Dubizzle car inventory, securely books test drives, and actually *remembers* who you are and what cars you like if you come back the next day. 
 
